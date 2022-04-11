@@ -1,4 +1,5 @@
-import React, { useEffect, useState, Link, useHistory, useParams } from "react";
+import React, { useEffect, useState, Link } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 const deleteMovie = require("../supportFunctions/api");
 const axios = require("axios");
