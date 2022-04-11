@@ -14,7 +14,7 @@ const MovieEdit = () => {
 
   const [errorInfo, setErrorInfo] = useState({});
   const [isError, setIsError] = useState(false);
-  const { id } = useParams();
+  const id = useParams();
   const navigate = useHistory();
 
   useEffect(() => {

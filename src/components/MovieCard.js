@@ -31,6 +31,7 @@ const MovieCard = ({ _id, title, year, review, director }) => {
             <Link className="link text-danger" to={`/movies/${_id}`}>
               Update
             </Link>
+            {isLoggedIn}
           </Button>
         </Card.Body>
       </Card>

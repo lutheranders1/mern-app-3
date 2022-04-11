@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useState } from "react";
 import { setToken } from "../supportFunctions/auth";
 import { login } from "../supportFunctions/api";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function Login({ setIsLoggedIn }) {
   const [data, setData] = useState({
@@ -12,7 +12,7 @@ export default function Login({ setIsLoggedIn }) {
 
   const [errorInfo, setErrorInfo] = useState({});
   const [isError, setIsError] = useState(false);
-  const navigate = useNavigate();
+  const navigate = useHistory();
 
   const handleSuccessfulLogin = ({ token }) => {
     setToken(token);
@@ -24,9 +24,7 @@ export default function Login({ setIsLoggedIn }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    login(data)
-      .then(handleSuccessfulLogin)
-      .catch(handleError);
+    login(data).then(handleSuccessfulLogin).catch(handleError);
   };
 
   const handleError = (error) => {
