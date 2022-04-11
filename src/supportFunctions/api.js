@@ -52,7 +52,7 @@ const register = (data) => {
 const getAxiosRequestConfig = (requestUrl, data, method = "post") => {
   const config = {
     method,
-    url: `/api${requestUrl}`,
+    url: `https://salty-crag-11243.herokuapp.com/api${requestUrl}`,
     headers: {
       Authorization: `${getToken()}`,
       "Content-Type": "application/json",
