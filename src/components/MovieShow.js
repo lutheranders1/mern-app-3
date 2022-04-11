@@ -6,7 +6,7 @@ const axios = require("axios");
 export default function MovieShow({ isLoggedIn }) {
   const [movie, setMovie] = useState([]);
 
-  const id = useParams();
+  const { id } = useParams();
 
   const navigate = useHistory();
 
