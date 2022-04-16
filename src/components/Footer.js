@@ -6,18 +6,19 @@ export default function Footer() {
   return (
     <div>
       <div class="card text-center text-white bg-dark  ">
-        <div class="card-header">Featured</div>
+        <div class="card-header">Copyright &copy; 2022 Luther Anderson</div>
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
+          <h5 class="card-title">Share your Movie Story </h5>
           <p class="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
+            We know that you care how information about you is used and shared,
+            and we appreciate your trust that we will do so carefully and
+            sensibly.
           </p>
           {/* <a href="#" class="btn btn-primary"> */}
-          Go somewhere
+
           {/* </a> */}
         </div>
-        <div class="card-footer text-muted">2 days ago</div>
+        <div class="card-footer text-muted">uWatchApp.com, Inc</div>
       </div>
     </div>
   );

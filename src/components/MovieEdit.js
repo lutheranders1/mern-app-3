@@ -1,8 +1,11 @@
 import axios from "axios";
-import React from "react";
+import * as React from "react";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { fetchOneMovie, getAxiosRequestConfig } from "../supportFunctions/api";
+import MovieForm from "../components/MovieForm";
+import Form from "react-bootstrap/Form";
+//import Button from "react-bootstrap/Button";
 
 const MovieEdit = () => {
   const [movie, setMovie] = useState({
@@ -14,7 +17,7 @@ const MovieEdit = () => {
 
   const [errorInfo, setErrorInfo] = useState({});
   const [isError, setIsError] = useState(false);
-  const id = useParams();
+  const { id } = useParams();
   const navigate = useHistory();
 
   useEffect(() => {
@@ -38,7 +41,7 @@ const MovieEdit = () => {
 
       console.log(response.data);
       setIsError(false);
-      navigate(`/movies/${response.data._id}`);
+      navigate.push(`/movies/${response.data._id}`);
     } catch (err) {
       console.log(err);
     }
@@ -52,23 +55,22 @@ const MovieEdit = () => {
     });
   };
 
+  // const goBack = () => {
+  //   navigate(-1)
+  // }
+
   const formInputProps = { data: movie, errorInfo, handleFormChange };
 
   return (
     <section className="form-section">
       <div className="form-box">
-        <form className="form" onSubmit={handleSubmit}>
+        <Form className="form" onSubmit={handleSubmit}>
           <h1>Edit a Movie</h1>
-          <div formInputProps={formInputProps} />
+          <MovieForm formInputProps={formInputProps} />
           <div>
-            <button type="submit" value="Edit Movie" />
+            <Form.Control type="submit" value="Edit Movie" />
           </div>
-          <div>
-            {/* <input type="button" onClick={goBack} value="Cancel" /> */}
-            <button className="button" onClick={() => navigate(-1)}>
-              Go Back
-            </button>
-          </div>
+          <div></div>
           {isError ? (
             <div className="error">
               <p>Error. Please try again</p>
@@ -76,7 +78,7 @@ const MovieEdit = () => {
           ) : (
             <></>
           )}
-        </form>
+        </Form>
       </div>
     </section>
   );

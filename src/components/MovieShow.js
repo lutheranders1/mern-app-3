@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
+import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useHistory, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
+//import ReactPlayer from "react-player";
+import { deleteMovie } from "../supportFunctions/api";
 
-const deleteMovie = require("../supportFunctions/api");
-const axios = require("axios");
+const MovieShow = ({ isLoggedIn }) => {
+  // let numberOfLikes = 0
+  // const [likes, setLikes] = useState(0)
 
-export default function MovieShow({ isLoggedIn }) {
   const [movie, setMovie] = useState([]);
 
-  const id = useParams();
+  const { id } = useParams();
 
   const navigate = useHistory();
 
@@ -15,11 +21,10 @@ export default function MovieShow({ isLoggedIn }) {
     async function fetchMovie() {
       const config = {
         method: "get",
-        url: `/api/movies/${id}`,
+        url: `https://salty-crag-11243.herokuapp.com/api/movies/${id}`,
         headers: {},
       };
       const response = await axios(config);
-      console.log(response.data.rating);
 
       setMovie(response.data);
     }
@@ -30,7 +35,7 @@ export default function MovieShow({ isLoggedIn }) {
     deleteMovie(id)
       .then((data) => {
         console.log(data);
-        navigate("/movies");
+        navigate.push("/movies");
       })
       .catch((err) => {
         console.log(err);
@@ -40,41 +45,48 @@ export default function MovieShow({ isLoggedIn }) {
 
   return (
     <div className="movie-show-div">
-      <div className="movie-info">
-        <h1>{movie.title}</h1>
-        <p>Director: {movie.director}</p>
-        <p>Released: {movie.year}</p>
+      <div className="movie-data-container-div">
+        <div className="movie-info">
+          <h1>{movie.title}</h1>
+          <p>Director: {movie.director}</p>
+          <p>Released: {movie.year}</p>
+          <p>Review: {movie.review}</p>
+        </div>
       </div>
       {isLoggedIn ? (
         <>
           <div id="alter-movie-buttons" className="alter-movie-buttons">
-            <button className="button">
-              <Link className="link" to={`/movies/${id}/edit`}>
-                Edit
-              </Link>
-            </button>
-            <button className="button" onClick={handleDeleteClick}>
+            <Button className="button" onClick={handleDeleteClick}>
               Delete
-            </button>
+            </Button>
           </div>
         </>
       ) : (
         <>
           <div id="alter-movie-buttons" className="alter-movie-buttons">
-            <p>Log in to review this movie</p>
-            <button id="button" className="button">
+            <p>Log in to rate this movie</p>
+            <Button id="button" className="button">
               <Link className="link" to={"/login"}>
                 Log In
               </Link>
-            </button>
-            <button id="button" className="button">
+            </Button>
+            <Button id="button" className="button">
               <Link className="link" to={"/register"}>
                 Sign Up
               </Link>
-            </button>
+            </Button>
           </div>
         </>
       )}
     </div>
   );
+};
+
+{
+  /* <div className='like-buttons'>
+<Button className="button" onClick={handleLikeButton}>Like</Button>
+<p>{likes}</p>
+</div> */
 }
+
+export default MovieShow;

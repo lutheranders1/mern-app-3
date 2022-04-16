@@ -29,10 +29,18 @@ const MovieCard = ({ _id, title, year, review, director }) => {
           </Card.Text> */}
           <Button className="button text-danger">
             <Link className="link text-danger" to={`/movies/${_id}`}>
-              Update
+              More Details
             </Link>
-            {isLoggedIn}
           </Button>
+          {isLoggedIn ? (
+            <Button className="button text-danger">
+              <Link className="link text-danger" to={`/movies/${_id}/edit`}>
+                Edit
+              </Link>
+            </Button>
+          ) : (
+            <></>
+          )}
         </Card.Body>
       </Card>
     </div>

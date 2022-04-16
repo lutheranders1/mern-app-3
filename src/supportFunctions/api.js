@@ -5,7 +5,7 @@ import { getToken } from "./auth";
 const fetchAllMovies = async () => {
   const config = {
     method: "get",
-    url: "/api/movies",
+    url: "https://salty-crag-11243.herokuapp.com/api/movies",
     headers: {},
   };
   const response = await axios(config);
@@ -25,7 +25,7 @@ const fetchOneMovie = async (id) => {
 const deleteMovie = async (id) => {
   const config = {
     method: "delete",
-    url: `/api/movies/${id}`,
+    url: `https://salty-crag-11243.herokuapp.com/api/movies/${id}`,
     headers: {
       Authorization: `Bearer ${getToken()}`,
     },

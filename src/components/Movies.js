@@ -1,10 +1,11 @@
 //import Footer from "./Footer";
-import { fetchAllMovies } from "../supportFunctions/api";
+import React from "react";
+import { useState, useEffect } from "react";
+// import axios from 'axios'
 import MovieCard from "../components/MovieCard";
+import { fetchAllMovies } from "../supportFunctions/api";
 
-import React, { useEffect, useState } from "react";
-
-export default function Movies() {
+const MovieList = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -22,4 +23,6 @@ export default function Movies() {
       </ul>
     </div>
   );
-}
+};
+
+export default MovieList;

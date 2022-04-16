@@ -84,8 +84,12 @@ function MoviesList() {
       <header>
         <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       </header>
-
-      <Movies />
+      <main>
+        <Movies />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
@@ -249,7 +253,7 @@ function NotFoundPage() {
 export default function App() {
   return (
     <BrowserRouter>
-      <div>
+      <div className="bg-dark">
         <Switch>
           <Route path={"/movies/new"} component={AddOneMovie} />
           <Route path={"/movies/:id/edit"} component={EditOneMovie} />

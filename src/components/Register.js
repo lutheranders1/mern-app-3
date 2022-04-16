@@ -30,7 +30,7 @@ export default function Register() {
 
   const handleSuccessfulRegister = () => {
     setIsError(false);
-    navigate("/login");
+    navigate.push("/login");
   };
 
   const handleError = (error) => {

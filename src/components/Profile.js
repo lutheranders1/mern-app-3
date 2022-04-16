@@ -1,46 +1,45 @@
+import React from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { Card } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
 import MovieCard from "../components/MovieCard";
-//import { Link } from "react-router-dom";
 import { getToken } from "../supportFunctions/auth";
 
-export default function Profile() {
+const Profile = () => {
   const [moviesAdded, setMoviesAdded] = useState([]);
   const [userData, setUserData] = useState({
     username: "",
     email: "",
   });
-  ////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     async function getProfile() {
       const config = {
         method: "get",
-        url: "/api/profile",
+        url: "https://salty-crag-11243.herokuapp.com/api/profile",
         headers: {
           Authorization: `${getToken()}`,
         },
       };
 
       const response = await axios(config);
-      setMoviesAdded(response.data.createdReview);
+      setMoviesAdded(response.data.createdMovies);
       setUserData(response.data);
       console.log(response.data);
     }
     getProfile();
   }, []);
 
-  //if (!movie) return "createMovie";
-
   return (
     <div className="profile-container">
       <div className="personal-details">
-        <Card.Body className="card-body">
-          <Card.Title className="card-title">
-            <p className="username">Welcome {userData.username} !</p>
-          </Card.Title>
-        </Card.Body>
+        <Card className="profile-card">
+          <Card.Body className="card-body">
+            <Card.Title className="card-title">
+              <p className="username">Hello {userData.username} !</p>
+            </Card.Title>
+          </Card.Body>
+        </Card>
       </div>
       <div className="movie-list-div" id="created-movies-div">
         <p className="movies-add-by">Your Movies</p>
@@ -54,4 +53,6 @@ export default function Profile() {
       </div>
     </div>
   );
-}
+};
+
+export default Profile;

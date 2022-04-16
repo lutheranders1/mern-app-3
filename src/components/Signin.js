@@ -19,7 +19,7 @@ export default function Signin({ setIsLoggedIn }) {
     setToken(token);
     setIsLoggedIn(true);
     setIsError(false);
-    navigate("/");
+    navigate.push("/");
   };
 
   const handleSubmit = async (event) => {
