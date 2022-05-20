@@ -82,11 +82,4 @@ const MovieShow = ({ isLoggedIn }) => {
   );
 };
 
-{
-  /* <div className='like-buttons'>
-<Button className="button" onClick={handleLikeButton}>Like</Button>
-<p>{likes}</p>
-</div> */
-}
-
 export default MovieShow;

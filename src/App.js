@@ -1,6 +1,7 @@
 import * as React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useEffect, useState } from "react";
+
 //import axios from "axios";
 
 import Home from "./components/Home";
@@ -15,6 +16,15 @@ import NotFound from "./components/NotFound";
 import MovieEdit from "./components/MovieEdit";
 import Footer from "./components/Footer";
 import { getToken } from "./supportFunctions/auth";
+
+const style = {
+  borderTop: "1px solid #E7E7E7",
+  textAlign: "center",
+  position: "fixed",
+  left: "0",
+  bottom: "0",
+  width: "100%",
+};
 
 function ProfilePage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,7 +45,7 @@ function ProfilePage() {
       <main>
         <Profile />
       </main>
-      <footer>
+      <footer style={style}>
         <Footer />
       </footer>
     </>
@@ -61,7 +71,7 @@ function HomePage() {
       <main>
         <Home />
       </main>
-      <footer>
+      <footer style={style}>
         <Footer />
       </footer>
     </>
@@ -87,7 +97,7 @@ function MoviesList() {
       <main>
         <Movies />
       </main>
-      <footer>
+      <footer style={style}>
         <Footer />
       </footer>
     </>
@@ -113,7 +123,7 @@ function MovieShowPage() {
       <main>
         <MovieShow isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       </main>
-      <footer>
+      <footer style={style}>
         <Footer />
       </footer>
     </>
@@ -139,7 +149,7 @@ function AddOneMovie() {
       <main>
         <MovieAdd />
       </main>
-      <footer>
+      <footer style={style}>
         <Footer />
       </footer>
     </>
@@ -165,7 +175,7 @@ function EditOneMovie() {
       <main>
         <MovieEdit />
       </main>
-      <footer>
+      <footer style={style}>
         <Footer />
       </footer>
     </>
@@ -191,7 +201,7 @@ function SigninPage(props) {
       <main>
         <Signin {...props} setIsLoggedIn={setIsLoggedIn} />
       </main>
-      <footer>
+      <footer style={style}>
         <Footer />
       </footer>
     </>
@@ -217,7 +227,7 @@ function RegisterPage() {
       <main>
         <Register />
       </main>
-      <footer>
+      <footer style={style}>
         <Footer />
       </footer>
     </>
@@ -243,7 +253,7 @@ function NotFoundPage() {
       <main>
         <NotFound />
       </main>
-      <footer>
+      <footer style={style}>
         <Footer />
       </footer>
     </>
@@ -253,7 +263,7 @@ function NotFoundPage() {
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="bg-dark">
+      <div className="bg-light">
         <Switch>
           <Route path={"/movies/new"} component={AddOneMovie} />
           <Route path={"/movies/:id/edit"} component={EditOneMovie} />

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
 import MovieCard from "../components/MovieCard";
+import FadeIn from "react-fade-in";
 import { getToken } from "../supportFunctions/auth";
 
 const Profile = () => {
@@ -45,9 +46,11 @@ const Profile = () => {
         <p className="movies-add-by">Your Movies</p>
         <ul className="movie-list" id="profile-movie-list">
           {moviesAdded.map((m) => (
-            <li key={m._id}>
-              <MovieCard {...m} />
-            </li>
+            <FadeIn>
+              <li key={m._id}>
+                <MovieCard {...m} />
+              </li>
+            </FadeIn>
           ))}
         </ul>
       </div>

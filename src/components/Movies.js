@@ -1,7 +1,8 @@
 //import Footer from "./Footer";
 import React from "react";
 import { useState, useEffect } from "react";
-// import axios from 'axios'
+//import { Fade } from "react-bootstrap";
+import FadeIn from "react-fade-in";
 import MovieCard from "../components/MovieCard";
 import { fetchAllMovies } from "../supportFunctions/api";
 
@@ -16,9 +17,11 @@ const MovieList = () => {
     <div className="movie-list-div">
       <ul className="movie-list">
         {movies.map((m) => (
-          <li key={m._id}>
-            <MovieCard {...m} />
-          </li>
+          <FadeIn>
+            <li key={m._id}>
+              <MovieCard {...m} />
+            </li>
+          </FadeIn>
         ))}
       </ul>
     </div>

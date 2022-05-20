@@ -70,7 +70,7 @@ const MovieEdit = () => {
           <div>
             <Form.Control type="submit" value="Edit Movie" />
           </div>
-          <div></div>
+
           {isError ? (
             <div className="error">
               <p>Error. Please try again</p>

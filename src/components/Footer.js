@@ -1,7 +1,5 @@
 import React from "react";
 
-//import { Link } from "react-router-dom";
-
 export default function Footer() {
   return (
     <div>
@@ -14,9 +12,6 @@ export default function Footer() {
             and we appreciate your trust that we will do so carefully and
             sensibly.
           </p>
-          {/* <a href="#" class="btn btn-primary"> */}
-
-          {/* </a> */}
         </div>
         <div class="card-footer text-muted">uWatchApp.com, Inc</div>
       </div>

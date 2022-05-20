@@ -18,23 +18,21 @@ const MovieCard = ({ _id, title, year, review, director }) => {
 
   return (
     <div>
-      <Card style={{ width: "18rem" }} className="movie-card">
+      <Card style={{ width: "50rem" }} className="movie-card">
         <Card.Body className="card-body">
-          <Card.Title className="card-title">{title}</Card.Title>
-          <Card.Title className="card-title">{year}</Card.Title>
-          <Card.Title className="card-title">{review}</Card.Title>
-          <Card.Title className="card-title">{director}</Card.Title>
-          {/* <Card.Text className="card-user">
-            <p>Added by {user?.username}</p>
-          </Card.Text> */}
-          <Button className="button text-danger">
-            <Link className="link text-danger" to={`/movies/${_id}`}>
+          <Card.Title className="card-title">Title: {title}</Card.Title>
+          <Card.Title className="card-title">Year: {year}</Card.Title>
+          <Card.Title className="card-title">Review: {review}</Card.Title>
+          <Card.Title className="card-title">Director: {director}</Card.Title>
+
+          <Button className="button text-white">
+            <Link className="link text-white" to={`/movies/${_id}`}>
               More Details
             </Link>
           </Button>
           {isLoggedIn ? (
-            <Button className="button text-danger">
-              <Link className="link text-danger" to={`/movies/${_id}/edit`}>
+            <Button className="button text-white">
+              <Link className="link text-white" to={`/movies/${_id}/edit`}>
                 Edit
               </Link>
             </Button>
